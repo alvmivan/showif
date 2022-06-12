@@ -1,0 +1,8 @@
+﻿{
+  "name": "EditorUtils",
+  "references": [
+    "Unity.TextMeshPro",
+    "Unity.TextMeshPro.Editor",
+    "EditorUtils.Runtime"
+  ]
+}
