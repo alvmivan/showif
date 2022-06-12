@@ -13,27 +13,17 @@ namespace TorqueGames.EditorUtils
 
             var otherProp = property.serializedObject.FindProperty(showIfAttribute.Condition);
 
-
             if (otherProp == null) return true;
 
             if (otherProp.propertyType is SerializedPropertyType.Boolean)
             {
-                // invert|value|result
-                //   0   |  0  |  0
-                //   1   |  0  |  1
-                //   0   |  1  |  1
-                //   1   |  1  |  0
                 return showIfAttribute.Invert ^ otherProp.boolValue;
             }
 
             var comparer = showIfAttribute.Comparision;
 
-            if (PropertyComparers.TryGetValue(comparer, out var comparerFunction))
-            {
-                return comparerFunction(otherProp, showIfAttribute.OtherValue);
-            }
-
-            return true;
+            return !PropertyComparers.TryGetValue(comparer, out var comparerFunction) ||
+                   comparerFunction(otherProp, showIfAttribute.OtherValue);
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -48,7 +38,7 @@ namespace TorqueGames.EditorUtils
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return ShouldShow(property) ? EditorGUIUtility.singleLineHeight + 1 : 1;
+            return ShouldShow(property) ? EditorGUIUtility.singleLineHeight : 0;
         }
     }
 }

@@ -1,23 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using TorqueGames.EditorUtils.Runtime;
 using UnityEditor;
 using UnityEngine;
 using static TorqueGames.EditorUtils.Runtime.PropertiesComparer;
 using static UnityEditor.AssetDatabase;
-using Object = UnityEngine.Object;
 
 namespace TorqueGames.EditorUtils
 {
     public static class PropertyComparers
     {
-        private static string Equal => PropertiesComparer.Equal;
-        private static string Different => PropertiesComparer.Different;
-        private static string Greater => PropertiesComparer.Greater;
-        private static string GreaterOrEqual => PropertiesComparer.GreaterOrEqual;
-        private static string Less => PropertiesComparer.Less;
-        private static string LessOrEqual => PropertiesComparer.LessOrEqual;
-
         public delegate bool ValuesComparer(SerializedProperty source, object target);
 
         private static readonly Dictionary<string, ValuesComparer> Comparers = new()
