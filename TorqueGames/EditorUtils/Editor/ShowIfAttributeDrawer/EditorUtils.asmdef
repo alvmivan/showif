@@ -1,8 +1,20 @@
 ﻿{
   "name": "EditorUtils",
+  "rootNamespace": "",
   "references": [
     "Unity.TextMeshPro",
     "Unity.TextMeshPro.Editor",
     "EditorUtils.Runtime"
-  ]
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }
